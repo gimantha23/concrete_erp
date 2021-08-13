@@ -68,7 +68,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container" style="height:50vh;margin-top:80px; margin-bottom:80px;">
         <table id="table_id" class="display table table-bordered">
             <thead>
                 <tr style="text-align:center;">
