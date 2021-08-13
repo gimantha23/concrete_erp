@@ -88,8 +88,14 @@
 
         $get_customer_name = mysqli_query($con, "SELECT customer_name FROM customers WHERE id='".$result_order_records['customer_id']."'");
         $res_customer_name = mysqli_fetch_array($get_customer_name);
+
+        if($result_order_records['approved']=="yes"){
+            $row_color_style = "style='background-color:#dfd !important'";
+        }else{
+            $row_color_style = "style='background-color:#fdd !important'";
+        }
 ?>
-                <tr>
+                <tr <?php echo $row_color_style; ?>>
                     <td><?php echo $result_order_records['job_no']; ?></td>
                     <td><?php echo $result_order_records['date']; ?></td>
                     <td><?php echo $res_customer_name['customer_name']; ?></td>
