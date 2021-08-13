@@ -237,8 +237,11 @@
                     <input type="date" class="form-control" id="txtPaymentDate" name="txtPaymentDate" required>
                 </div>
             </div>
-
-            <button type="submit" class="btn btn-primary" name="btnSubmit">Submit</button>
+            <div class="row mb-5">
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary" name="btnSubmit">Submit</button>
+                </div>
+            </div>
         </form>
     </div>
 <?php
