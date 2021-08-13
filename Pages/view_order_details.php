@@ -97,6 +97,13 @@ $job_no = ($_GET['jobid']);
 
     $get_payment_details = mysqli_query($con, "SELECT * FROM payments WHERE id='".$res_order_details['payment_id']."'");
     $res_payment_details = mysqli_fetch_array($get_payment_details);
+
+    $status="pending";
+    $disabled="";
+    if($res_order_details['approved']=="yes"){
+        $status="approved";
+        $disabled="disabled";
+    }
     ?>
     <div class="container">
         <div>
@@ -267,11 +274,11 @@ $job_no = ($_GET['jobid']);
             </div>
             <div class="row mb-5">
                 <div class="col-md-2 offset-md-4">
-                    <button type="submit" class="btn btn-outline-danger" name="btnSubmit">Reject</button>
-                    <!-- </div>
-                <div class="col-md-2"> -->
+                    <button type="submit" class="btn btn-outline-danger" name="btnSubmit" <?php echo $disabled; ?>>Reject</button>
                     <button type="button" class="btn btn-success" name="btnSubmit"
-                        onclick="approve_order('<?php echo $job_no; ?>');">Approve</button>
+                        onclick="approve_order('<?php echo $job_no; ?>');" <?php echo $disabled; ?>>
+                        <?php if($status=="pending"){echo "Approve";}else{echo"Approved";} ?>
+                    </button>
                 </div>
             </div>
         </div>
