@@ -93,7 +93,7 @@
                     <td><?php echo $result_order_records['job_no']; ?></td>
                     <td><?php echo $result_order_records['date']; ?></td>
                     <td><?php echo $res_customer_name['customer_name']; ?></td>
-                    <td style="text-align:right;"><?php echo $result_order_records['quantity']; ?></td>
+                    <td style="text-align:right;"><?php echo $result_order_records['requested_quantity']; ?></td>
                     <td style="text-align:right;"><?php echo $result_order_records['approved']; ?></td>
                     <td style="text-align:center;"><button class="btn-sm btn-primary" onclick="view_order_page('<?php echo $result_order_records['job_no']; ?>')">view</button></td>
                 </tr>
