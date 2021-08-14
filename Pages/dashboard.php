@@ -81,7 +81,7 @@
                 </a>
             </div>
             <div class="col-lg-3">
-                <a class="card-link" href="">
+                <a class="card-link" href="./production.php">
                     <div class="card card-item">
                         <div class="card-body text-center">
                             <h5 class="card-icon"><i class="fa fa-cogs" aria-hidden="true"></i>
