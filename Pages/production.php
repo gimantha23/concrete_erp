@@ -88,14 +88,23 @@
 
         $get_customer_name = mysqli_query($con, "SELECT customer_name FROM customers WHERE id='".$result_order_records['customer_id']."'");
         $res_customer_name = mysqli_fetch_array($get_customer_name);
+
+        $disabled="";
+        if($result_order_records['order_complete']=="yes"){
+            $disabled="disabled";
+        }
 ?>
                 <tr>
                     <td><?php echo $result_order_records['job_no']; ?></td>
                     <td><?php echo $res_customer_name['customer_name']; ?></td>
                     <td><?php echo $result_order_records['required_date']; ?></td>
                     <td style="text-align:right;"><?php echo $result_order_records['requested_quantity']; ?></td>
-                    <td style="text-align:right;"></td>
-                    <td style="text-align:center;"><button class="btn-sm btn-primary" onclick="add_delivery_page('<?php echo $result_order_records['job_no']; ?>')">Add delivery</button></td>
+                    <td style="text-align:right;"><?php echo $result_order_records['total_delivered_qty']; ?></td>
+                    <td style="text-align:center;">
+                        <button type="button" class="btn btn-sm btn-primary" onclick="add_delivery_page('<?php echo $result_order_records['job_no']; ?>')" <?php echo $disabled; ?>>
+                            Add delivery
+                        </button>
+                    </td>
                 </tr>
 <?php
     }
