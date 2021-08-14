@@ -43,13 +43,13 @@ $job_no = ($_GET['jobid']);
                             } else {
                                 alert("An error occured");
                             }
+                            location.reload();
                         }
                     }
                 }
                 req.open("POST", "../PHPScripts/approve_order.php", true);
                 req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 req.send("jobno=" + jobno);
-                location.reload();
             }
         }
     }
