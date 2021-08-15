@@ -21,6 +21,9 @@ $job_no = ($_GET['jobid']);
     <title>View Order Details</title>
 
     <script type="text/javascript">
+    function goBack() {
+        window.history.back();
+    }
     function getXmlHttpRequestObject() {
         if (window.XMLHttpRequest) {
             return new XMLHttpRequest();
@@ -28,8 +31,6 @@ $job_no = ($_GET['jobid']);
             return new ActiveXObject("Microsoft.XMLHTTP");
         } else {}
     }
-
-
     function approve_order(jobno) {
         let action = confirm("Do you wish to approve Job No. " + jobno);
         if (action) {
@@ -57,38 +58,9 @@ $job_no = ($_GET['jobid']);
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="row text-center page-heading">
-                <h1>ERP Management System</h1>
-                <h3>ABC Lanka PLC</h3>
-            </div>
-        </div>
-        <nav class="navbar navbar-light navbar-expand bg-faded justify-content-center"
-            style="background-color:#f3f3f3;font-size:24px;padding:0px;">
-            <div class="container">
-                <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
-                    <ul class="navbar-nav w-100 justify-content-start">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="./dashboard.php"><i class="fa fa-home" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <?php
+<?php
+    require('../Components/header.php');
+
     include('../PHPScripts/db_connect.php');
     $sel_order_details = mysqli_query($con, "SELECT * FROM concrete_order WHERE job_no = '$job_no'");    
     $res_order_details = mysqli_fetch_array($sel_order_details);
