@@ -38,7 +38,7 @@ require('../Components/header.php');
                             <h5 class="card-icon"><i class="fa fa-file-text-o"
                                     aria-hidden="true"></i>
                             </h5>
-                            <h5 class="card-title">Sales Order</h5>
+                            <h5 class="card-title">Concrete Order</h5>
                         </div>
                     </div>
                 </a>

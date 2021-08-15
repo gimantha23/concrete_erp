@@ -1,8 +1,8 @@
 <header>
     <div class="container">
         <div class="row text-center page-heading">
-            <h1>ERP Management System</h1>
-            <h3>ABC Lanka PLC</h3>
+            <h1>Prema Ready Mix (Pvt) Ltd.</h1>
+            <h3>Order Management System</h3>
         </div>
     </div>
     <nav class="navbar navbar-light navbar-expand bg-faded justify-content-center"

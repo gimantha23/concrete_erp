@@ -2,7 +2,7 @@
 
 <footer>
     <div class="row">
-        <p> Copyright &copy; 2020 by Galleon Lanka PLC. All rights reserved.</p>
+        <p> Copyright &copy; <?php echo date("Y");?> Prema Ready Mix (Pvt) Ltd. All rights reserved.</p>
     </div>
     <div class="row">
         <p>Designed and Developed by DGS2</p>
