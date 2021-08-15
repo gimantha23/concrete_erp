@@ -66,7 +66,7 @@ require('../Components/header.php');
                 </a>
             </div>
             <div class="col-lg-3">
-                <a class="card-link" href="">
+                <a class="card-link" href="./manage_user_dashboard.php">
                     <div class="card card-item">
                         <div class="card-body text-center">
                             <h5 class="card-icon"><i class="fa fa-user" aria-hidden="true"></i>
