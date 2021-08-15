@@ -27,15 +27,8 @@
 
     <script type="text/javascript">
     $(document).ready(function() {
-        $('#production_datatable').DataTable();
+        $('#view_delivery_table').DataTable();
     });
-
-    function add_delivery_page(jobno){
-        window.location.href = "add_delivery.php?jobno="+jobno;
-    }
-    function view_delivery_page(jobno){
-        window.location.href = "view_delivery.php?jobno="+jobno;
-    }
     </script>
 </head>
 
@@ -72,45 +65,31 @@
         </nav>
     </header>
     <div class="container" style="height:50vh;margin-top:80px; margin-bottom:80px;">
-        <table id="production_datatable" class="display table table-bordered">
+        <table id="view_delivery_table" class="display table table-bordered">
             <thead>
                 <tr style="text-align:center;">
-                    <th>Job No.</th>
-                    <th>Customer</th>
-                    <th>Delivery Date</th>
-                    <th>Req Quantity (m<sup>3</sup>)</th>
-                    <th>Sent Quantity (m<sup>3</sup>)</th>
-                    <th>Action</th>
+                    <th>Delivery Ticket No.</th>
+                    <th>Date/Time</th>
+                    <th>Trip</th>
+                    <th>Delivered Quantity (m<sup>3</sup>)</th>
+                    <th>Vehicle No.</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
 <?php
     include('../PHPScripts/db_connect.php');
-    $get_order_records = mysqli_query($con, "SELECT * FROM concrete_order WHERE approved='yes'");
-    while($result_order_records = mysqli_fetch_array($get_order_records)){
-
-        $get_customer_name = mysqli_query($con, "SELECT customer_name FROM customers WHERE id='".$result_order_records['customer_id']."'");
-        $res_customer_name = mysqli_fetch_array($get_customer_name);
-
-        $disabled="";
-        if($result_order_records['order_complete']=="yes"){
-            $disabled="disabled";
-        }
+    $job_no = $_GET['jobno'];
+    $get_delivery_records = mysqli_query($con, "SELECT * FROM delivery WHERE job_no='$job_no'");
+    while($result_delivery_records = mysqli_fetch_array($get_delivery_records)){
 ?>
                 <tr>
-                    <td><?php echo $result_order_records['job_no']; ?></td>
-                    <td><?php echo $res_customer_name['customer_name']; ?></td>
-                    <td><?php echo $result_order_records['required_date']; ?></td>
-                    <td style="text-align:right;"><?php echo $result_order_records['requested_quantity']; ?></td>
-                    <td style="text-align:right;"><?php echo $result_order_records['total_delivered_qty']; ?></td>
-                    <td style="text-align:center;">
-                        <button type="button" class="btn btn-sm btn-primary" onclick="add_delivery_page('<?php echo $result_order_records['job_no']; ?>')" <?php echo $disabled; ?>>
-                            Add delivery
-                        </button>
-                        <button type="button" class="btn btn-sm btn-primary" onclick="view_delivery_page('<?php echo $result_order_records['job_no']; ?>')">
-                            View deliveries
-                        </button>
-                    </td>
+                    <td><?php echo $result_delivery_records['delivery_no']; ?></td>
+                    <td><?php echo $result_delivery_records['delivery_date']." ".$result_delivery_records['delivery_time'] ?></td>
+                    <td><?php echo $result_delivery_records['trip_no']; ?></td>
+                    <td style="text-align:right;"><?php echo $result_delivery_records['quantity']; ?></td>
+                    <td style="text-align:right;"><?php echo $result_delivery_records['vehicle_no']; ?></td>
+                    <td style="text-align:center;"></td>
                 </tr>
 <?php
     }

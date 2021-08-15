@@ -65,7 +65,7 @@
         </nav>
     </header>
     <?php
-    $job_no = $_GET['jobid'];
+    $job_no = $_GET['jobno'];
 
     date_default_timezone_set("Asia/Colombo");
     $today_date = date("Y.m.d");
