@@ -28,7 +28,21 @@
     <title>Delivery Note</title>
 
     <script type="text/javascript">
-    
+    function check_quantity(){
+        const req_qty = parseFloat(document.getElementById("txtReqQty").value);
+        const cumulative_qty = parseFloat(document.getElementById("txtCumulativeQuantity").value);
+        const entered_qty = parseFloat(document.getElementById("txtDeliverQuantity").value);
+        const tot_qty = entered_qty+cumulative_qty;
+        const deliverable_qty = req_qty - cumulative_qty;
+        if(tot_qty > req_qty){
+            document.getElementById("txtDeliverQuantity").value="";
+            document.getElementById("txtDeliverQuantity").classList.add("is-invalid");
+            document.getElementById("quantity_exceed_error").innerHTML="Maximum quantity is <b>"+deliverable_qty+"</b> m<sup>3</sup>";
+        }else{
+            document.getElementById("txtDeliverQuantity").classList.remove("is-invalid");
+            document.getElementById("quantity_exceed_error").innerHTML="";
+        }
+    }
     </script>
 </head>
 
@@ -99,6 +113,7 @@
                 <div class="col-md-3">
                     <label for="txtDate">Date</label>
                     <input type="text" class="form-control" id="txtDate" value="<?php echo $today_date; ?>" readonly>
+                    <input type="text" id="txtReqQty" name="txtReqQty" value="<?php echo $res_order_details['requested_quantity']; ?>" readonly>
                 </div>
                 <div class="col-md-3">
                     <label for="txtPoNo">PO No</label>
@@ -181,7 +196,8 @@
                 </div>
                 <div class="col-md-2">
                     <label for="txtDeliverQuantity">Delivered Volume m<sup>3</sup></label>
-                    <input type="number" min="0.1" step="0.1" class="form-control" id="txtDeliverQuantity" name="txtDeliverQuantity" required>
+                    <input type="number" min="0.1" step="0.1" class="form-control " id="txtDeliverQuantity" name="txtDeliverQuantity" onkeyup="check_quantity();" required>
+                    <div id="quantity_exceed_error" class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-2">
                     <label for="txtCumulativeQuantity">Cumulative Volume m<sup>3</sup></label>
