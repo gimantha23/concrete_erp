@@ -29,7 +29,7 @@
 <?php
 require('../Components/header.php');
 ?>
-    <div class="container">
+    <div class="container" style="height:65vh;">
         <div class="row mt-4">
             <div class="col-lg-3">
                 <a class="card-link" href="./salesOrder.php">
