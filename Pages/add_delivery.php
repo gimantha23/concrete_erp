@@ -37,7 +37,7 @@
         if(tot_qty > req_qty){
             document.getElementById("txtDeliverQuantity").value="";
             document.getElementById("txtDeliverQuantity").classList.add("is-invalid");
-            document.getElementById("quantity_exceed_error").innerHTML="Maximum quantity is <b>"+deliverable_qty+"</b> m<sup>3</sup>";
+            document.getElementById("quantity_exceed_error").innerHTML="Maximum quantity is <b>"+deliverable_qty.toFixed(2)+"</b> m<sup>3</sup>";
         }else{
             document.getElementById("txtDeliverQuantity").classList.remove("is-invalid");
             document.getElementById("quantity_exceed_error").innerHTML="";
@@ -113,7 +113,7 @@
                 <div class="col-md-3">
                     <label for="txtDate">Date</label>
                     <input type="text" class="form-control" id="txtDate" value="<?php echo $today_date; ?>" readonly>
-                    <input type="text" id="txtReqQty" name="txtReqQty" value="<?php echo $res_order_details['requested_quantity']; ?>" readonly>
+                    <input type="hidden" id="txtReqQty" name="txtReqQty" value="<?php echo $res_order_details['requested_quantity']; ?>" readonly>
                 </div>
                 <div class="col-md-3">
                     <label for="txtPoNo">PO No</label>
@@ -196,7 +196,7 @@
                 </div>
                 <div class="col-md-2">
                     <label for="txtDeliverQuantity">Delivered Volume m<sup>3</sup></label>
-                    <input type="number" min="0.1" step="0.1" class="form-control " id="txtDeliverQuantity" name="txtDeliverQuantity" onkeyup="check_quantity();" required>
+                    <input type="number" min="0.01" step="0.01" class="form-control " id="txtDeliverQuantity" name="txtDeliverQuantity" onkeyup="check_quantity();" required>
                     <div id="quantity_exceed_error" class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-2">
