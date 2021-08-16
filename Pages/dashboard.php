@@ -44,6 +44,17 @@ require('../Components/header.php');
                 </a>
             </div>
             <div class="col-lg-3">
+                <a class="card-link" href="./viewPastSalesOrders.php">
+                    <div class="card card-item">
+                        <div class="card-body text-center">
+                            <h5 class="card-icon"><i class="fa fa-list" aria-hidden="true"></i>
+                            </h5>
+                            <h5 class="card-title">View Past Orders</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3">
                 <a class="card-link" href="./accounts.php">
                     <div class="card card-item">
                         <div class="card-body text-center">
