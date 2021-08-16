@@ -45,9 +45,11 @@
             document.getElementById("txtConPwd").value="";
             document.getElementById("txtConPwd").classList.add("is-invalid");
             document.getElementById("pwd_mismatch_error").innerHTML="Passwords do not match";
+            document.getElementById("submitButton").disabled=true;
         }else{
             document.getElementById("pwd_mismatch_error").innerHTML="";
             document.getElementById("txtConPwd").classList.remove("is-invalid");
+            document.getElementById("submitButton").disabled=false;
         }
     }
     function check_username() {
@@ -62,10 +64,12 @@
                                 document.getElementById("txtUsername").classList.remove("is-invalid");
                                 document.getElementById("txtUsername").classList.add("is-valid");
                                 document.getElementById("username_success").innerHTML="Username is available";
+                                document.getElementById("submitButton").disabled=false;
                             } else if (req.responseText == "duplicate") {
                                 document.getElementById("txtUsername").classList.remove("is-valid");
                                 document.getElementById("txtUsername").classList.add("is-invalid");
                                 document.getElementById("duplicate_username_error").innerHTML="Username is taken.";
+                                document.getElementById("submitButton").disabled=true;
                             }
                         }
                     }
@@ -79,6 +83,7 @@
             document.getElementById("txtUsername").classList.remove("is-valid");
             document.getElementById("duplicate_username_error").innerHTML="";
             document.getElementById("username_success").innerHTML="";
+            document.getElementById("submitButton").disabled=true;
         }
     }
     </script>
@@ -143,7 +148,7 @@
 
             <div class="row mb-5">
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary" name="btnSubmit">Submit</button>
+                    <button type="submit" class="btn btn-primary" name="btnSubmit" id="submitButton">Submit</button>
                 </div>
             </div>
         </form>
