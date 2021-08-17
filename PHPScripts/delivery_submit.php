@@ -11,10 +11,10 @@ if(isset($_POST['btnSubmit'])){
     $logged_user_id = $_SESSION["user_id"];
     date_default_timezone_set("Asia/Colombo");
     $today_date = date("Y.m.d");
-    $time_now = date("h:ia");
-    $prepared_datetime = date("Y-m-d h:ia");
+    $time_now = date("H:i");
+    $prepared_datetime = date("Y-m-d H:i");
 
-    $select_max_delivery_no = mysqli_query($con, "SELECT MAX(delivery_no) FROM delivery WHERE job_no='$job_no'");
+    $select_max_delivery_no = mysqli_query($con, "SELECT MAX(delivery_no) FROM delivery");
 	$result_max_delivery_no = mysqli_fetch_array($select_max_delivery_no);
 	if ($result_max_delivery_no[0] == '') {
 		$delivery_no = '100';
@@ -77,7 +77,12 @@ if(isset($_POST['btnSubmit'])){
     mysqli_close($con);
     
     if($update_qty && $insert_delivery){
-        header('location:../Pages/production.php');
+        ?>
+        <script type="text/javascript">
+            window.open("../Pages/delivery_note_print.php?jobno=<?php echo $job_no ?>&delivery_no=<?php echo $delivery_no ?>");
+            window.location.replace("../Pages/production.php");
+        </script>
+        <?php
     }
 }
 ?>

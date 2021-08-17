@@ -211,8 +211,8 @@
             </div>
 
             <div class="row mb-5 offset-md-7">
-                <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary" name="btnSubmit">Save</button>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary" name="btnSubmit">Save & Print</button>
                 </div>
             </div>
         </form>
