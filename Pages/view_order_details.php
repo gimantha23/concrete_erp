@@ -47,6 +47,7 @@ $job_no = ($_GET['jobid']);
                             if (req.responseText == "success") {
                                 alert("Approved Job No. " + jobno);
                             } else {
+                                console.log(req.responseText)
                                 alert("An error occured");
                             }
                             location.reload();
