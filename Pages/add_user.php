@@ -29,7 +29,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/c829a83b30.js"></script>
-    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    
     <title>Add User</title>
 
     <script type="text/javascript">
@@ -103,7 +103,7 @@
     include('../PHPScripts/db_connect.php');
 
     ?>
-    <div class="container" style="height:65vh;">
+    <div class="container">
         <form action="../PHPScripts/add_user_submit.php" method="post">
             <div class="row mb-3 mt-3">
                 <div class="col-md-3">
