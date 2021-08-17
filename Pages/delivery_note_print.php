@@ -1,5 +1,13 @@
 <?php
 session_start();
+if(!isset($_SESSION["user_id"])){
+    header('location:./index.php');
+}
+$user_type = $_SESSION["user_type"];
+if($user_type=="account" || $user_type=="sales"){
+    echo "Sorry! You are not authorized to view this page";
+    return;
+}
 include("../PHPScripts/db_connect.php");
 $jobno = $_GET['jobno'];
 $delivery_no = $_GET['delivery_no'];

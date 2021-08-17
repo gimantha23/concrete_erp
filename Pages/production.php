@@ -3,6 +3,11 @@
     if(!isset($_SESSION["user_id"])){
         header('location:./index.php');
     }
+    $user_type = $_SESSION["user_type"];
+    if($user_type=="account" || $user_type=="sales"){
+        echo "Sorry! You are not authorized to view this page";
+        return;
+    }
 ?>
 <!doctype html>
 <html lang="en">

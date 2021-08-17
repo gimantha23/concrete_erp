@@ -3,6 +3,7 @@
     if(!isset($_SESSION["user_id"])){
         header('location:./index.php');
     }
+    $user_type = $_SESSION["user_type"];
 ?>
 <!doctype html>
 <html lang="en">
@@ -31,6 +32,9 @@ require('../Components/header.php');
 ?>
     <div class="container" style="height:65vh;">
         <div class="row mt-4">
+        <?php 
+        if($user_type=="sales" || $user_type=="manager" || $user_type=="admin"){
+        ?>
             <div class="col-lg-3">
                 <a class="card-link" href="./salesOrder.php">
                     <div class="card card-item">
@@ -43,6 +47,13 @@ require('../Components/header.php');
                     </div>
                 </a>
             </div>
+        <?php
+        }
+        ?>
+
+        <?php 
+        if($user_type=="sales" || $user_type=="admin"){
+        ?>
             <div class="col-lg-3">
                 <a class="card-link" href="./viewPastSalesOrders.php">
                     <div class="card card-item">
@@ -54,6 +65,13 @@ require('../Components/header.php');
                     </div>
                 </a>
             </div>
+        <?php
+        }
+        ?>
+
+        <?php 
+        if($user_type=="account" || $user_type=="manager" || $user_type=="admin"){
+        ?>
             <div class="col-lg-3">
                 <a class="card-link" href="./accounts.php">
                     <div class="card card-item">
@@ -65,6 +83,13 @@ require('../Components/header.php');
                     </div>
                 </a>
             </div>
+        <?php
+        }
+        ?>
+
+        <?php 
+        if($user_type=="production" || $user_type=="manager" || $user_type=="admin"){
+        ?>
             <div class="col-lg-3">
                 <a class="card-link" href="./production.php">
                     <div class="card card-item">
@@ -76,6 +101,13 @@ require('../Components/header.php');
                     </div>
                 </a>
             </div>
+        <?php
+        }
+        ?>
+
+        <?php 
+        if($user_type=="manager" || $user_type=="admin"){
+        ?>
             <div class="col-lg-3">
                 <a class="card-link" href="./manage_user_dashboard.php">
                     <div class="card card-item">
@@ -87,6 +119,9 @@ require('../Components/header.php');
                     </div>
                 </a>
             </div>
+        <?php
+        }
+        ?>
         </div>
     </div>
 
