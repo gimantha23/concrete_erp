@@ -1,3 +1,8 @@
+<style>
+    .page-heading {
+    margin: 30px 0px;
+    }
+</style>
 <header>
     <div class="container">
         <div class="row text-center page-heading">

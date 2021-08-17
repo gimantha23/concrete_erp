@@ -29,6 +29,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/c829a83b30.js"></script>
+    <link rel="stylesheet" href="../assets/css/mainStyles.css">
     
     <title>Delivery Note</title>
 
@@ -86,7 +87,7 @@
     $sel_cus_details = mysqli_query($con, "SELECT * FROM customers WHERE id='".$res_order_details['customer_id']."'");
     $res_cus_details = mysqli_fetch_array($sel_cus_details);
     ?>
-    <div class="container">
+    <div class="container page-spacing">
         <form action="../PHPScripts/delivery_submit.php" method="post">
             <div class="row mb-3 mt-3">
                 <div class="col-md-3">
