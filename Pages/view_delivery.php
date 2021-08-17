@@ -37,6 +37,9 @@
     $(document).ready(function() {
         $('#view_delivery_table').DataTable();
     });
+    function print_delivery_note(job_no, delivery_no){
+        window.open("delivery_note_print.php?jobno="+job_no+"&delivery_no="+delivery_no);
+    }
     </script>
 </head>
 
@@ -53,7 +56,7 @@ require('../Components/header.php');
                     <th>Trip</th>
                     <th>Delivered Quantity (m<sup>3</sup>)</th>
                     <th>Vehicle No.</th>
-                    <th></th>
+                    <th>Print</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,7 +72,11 @@ require('../Components/header.php');
                     <td><?php echo $result_delivery_records['trip_no']; ?></td>
                     <td style="text-align:right;"><?php echo $result_delivery_records['quantity']; ?></td>
                     <td style="text-align:right;"><?php echo $result_delivery_records['vehicle_no']; ?></td>
-                    <td style="text-align:center;"></td>
+                    <td style="text-align:center;">
+                        <button class="btn-sm btn-warning" onclick="print_delivery_note('<?php echo $job_no; ?>', '<?php echo $result_delivery_records['delivery_no']; ?>');">
+                            <i class="fa fa-print" aria-hidden="true"></i>
+                        </button>
+                    </td>
                 </tr>
 <?php
     }
