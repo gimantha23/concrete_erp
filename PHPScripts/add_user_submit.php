@@ -16,7 +16,7 @@ if(isset($_POST['btnSubmit'])){
                                                 VALUES ('$username','$fname','$lname','$usertype','$pw','$email','yes','$today_date','$logged_user_id')");
 
     if($add_user){
-        header('location:../Pages/dashboard.php');
+        header('location:../Pages/manage_user.php');
     }
 
     mysqli_close($con);
