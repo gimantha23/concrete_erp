@@ -44,7 +44,7 @@
 <?php
 require('../Components/header.php');
 ?>
-    <div class="container" style="height:50vh;margin-top:80px; margin-bottom:80px;">
+    <div class="container">
         <table id="view_sales_orders" class="display table table-bordered">
             <thead>
                 <tr style="text-align:center;">
@@ -85,9 +85,7 @@ require('../Components/header.php');
             </tbody>
         </table>
     </div>
-    <?php
-require('../Components/footer.php');
-?>
+    
 </body>
 
 </html>

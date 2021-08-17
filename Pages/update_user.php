@@ -135,9 +135,7 @@
             </div>
         </form>
     </div>
-<?php
-require('../Components/footer.php');
-?>
+
 </body>
 
 </html>

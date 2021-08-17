@@ -262,9 +262,7 @@ $job_no = ($_GET['jobid']);
             </div>
         </div>
     </div>
-    <?php
-require('../Components/footer.php');
-?>
+    
 </body>
 
 </html>

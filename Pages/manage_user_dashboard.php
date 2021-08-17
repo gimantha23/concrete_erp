@@ -61,9 +61,7 @@ require('../Components/header.php');
         </div>
     </div>
 
-<?php
-require('../Components/footer.php');
-?>
+
 </body>
 
 </html>

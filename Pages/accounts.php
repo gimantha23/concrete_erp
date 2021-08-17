@@ -90,9 +90,7 @@ require('../Components/header.php');
             </tbody>
         </table>
     </div>
-    <?php
-require('../Components/footer.php');
-?>
+    
 </body>
 
 </html>
