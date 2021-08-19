@@ -29,7 +29,7 @@ $username = $_SESSION["user_name"];
                 </ul>
                 <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
                     <li class="nav-item" title="Hi <?php echo $username; ?>">
-                        <a class="nav-link" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                        <a class="nav-link" href="./userProfile.php"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item" title="Log out">
                         <a class="nav-link" href="../PHPScripts/logout.php"><i class="fa fa-sign-out"
