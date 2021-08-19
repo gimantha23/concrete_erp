@@ -5,7 +5,7 @@
     }
     $user_type = $_SESSION["user_type"];
     if($user_type=="account" || $user_type=="sales"){
-        echo "Sorry! You are not authorized to view this page";
+        header('location:../ErrorBoundary/403.php');
         return;
     }
 ?>

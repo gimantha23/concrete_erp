@@ -5,7 +5,7 @@ if(!isset($_SESSION["user_id"])){
 }
 $user_type = $_SESSION["user_type"];
     if($user_type=="sales" || $user_type=="production"){
-        echo "Sorry! You are not authorized to view this page";
+        header('location:../ErrorBoundary/403.php');
         return;
     }
 $job_no = ($_GET['jobid']);
