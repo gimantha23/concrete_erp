@@ -1,3 +1,7 @@
+<?php
+$username = $_SESSION["user_name"];
+?>
+
 <style>
     .page-heading {
     margin: 30px 0px;
@@ -24,7 +28,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-                    <li class="nav-item" title="User Profile">
+                    <li class="nav-item" title="Hi <?php echo $username; ?>">
                         <a class="nav-link" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item" title="Log out">

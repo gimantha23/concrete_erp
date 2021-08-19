@@ -14,6 +14,7 @@ if(isset($_POST['btnSubmit'])){
 					$check_password_res = mysqli_fetch_array($check_password);
 					$_SESSION["user_id"] = $check_password_res["user_id"];
 					$_SESSION["user_type"] = $check_password_res["user_type"];
+					$_SESSION["user_name"] = $check_password_res["first_name"];
 					header('Location:../Pages/dashboard.php');
 				}else{
 					$_SESSION["error"] = "Invalid Password";
