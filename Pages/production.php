@@ -40,10 +40,10 @@
     });
 
     function add_delivery_page(jobno){
-        window.location.href = "add_delivery.php?jobno="+jobno;
+        window.location.href = "addDelivery.php?jobno="+jobno;
     }
     function view_delivery_page(jobno){
-        window.location.href = "view_delivery.php?jobno="+jobno;
+        window.location.href = "viewDelivery.php?jobno="+jobno;
     }
     </script>
 </head>

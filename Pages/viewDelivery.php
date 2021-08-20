@@ -39,7 +39,7 @@
         $('#view_delivery_table').DataTable();
     });
     function print_delivery_note(job_no, delivery_no){
-        window.open("delivery_note_print.php?jobno="+job_no+"&delivery_no="+delivery_no);
+        window.open("deliveryNotePrint.php?jobno="+job_no+"&delivery_no="+delivery_no);
     }
     </script>
 </head>

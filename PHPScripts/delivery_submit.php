@@ -79,7 +79,7 @@ if(isset($_POST['btnSubmit'])){
     if($update_qty && $insert_delivery){
         ?>
         <script type="text/javascript">
-            window.open("../Pages/delivery_note_print.php?jobno=<?php echo $job_no ?>&delivery_no=<?php echo $delivery_no ?>");
+            window.open("../Pages/deliveryNotePrint.php?jobno=<?php echo $job_no ?>&delivery_no=<?php echo $delivery_no ?>");
             window.location.replace("../Pages/production.php");
         </script>
         <?php

@@ -72,7 +72,7 @@
     }
     ?>
     <div class="container page-spacing">
-        <form action="../PHPScripts/salesOrder_submit.php" method="post">
+        <form action="../PHPScripts/sales_order_submit.php" method="post">
             <div class="row mb-3 mt-3">
                 <div class="col-md-3">
                     <label for="txtDate">Date</label>

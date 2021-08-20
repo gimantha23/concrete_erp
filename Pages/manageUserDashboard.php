@@ -37,7 +37,7 @@ require('../Components/header.php');
     <div class="container" style="height:65vh;">
         <div class="row mt-4">
             <div class="col-lg-3">
-                <a class="card-link" href="./add_user.php">
+                <a class="card-link" href="./addUser.php">
                     <div class="card card-item">
                         <div class="card-body text-center">
                             <h5 class="card-icon"><i class="fa fa-user-plus" aria-hidden="true"></i>
@@ -48,7 +48,7 @@ require('../Components/header.php');
                 </a>
             </div>
             <div class="col-lg-3">
-                <a class="card-link" href="./manage_user.php">
+                <a class="card-link" href="./manageUser.php">
                     <div class="card card-item">
                         <div class="card-body text-center">
                             <h5 class="card-icon"><i class="fa fa-users" aria-hidden="true"></i>

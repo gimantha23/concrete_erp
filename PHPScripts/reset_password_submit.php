@@ -8,7 +8,7 @@ $update_pwd = mysqli_query($con, "UPDATE users SET password='$pwd' WHERE user_id
 
 if($update_pwd){
     echo "success";
-    header('location:../Pages/manage_user.php');
+    header('location:../Pages/manageUser.php');
 }else{
     echo(mysqli_error($con));
 }

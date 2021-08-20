@@ -69,10 +69,10 @@
         }
     }
     function update_user_page(uid){
-        window.location.href = "update_user.php?uid="+uid;
+        window.location.href = "updateUser.php?uid="+uid;
     }
     function reset_password_page(uid){
-        window.location.href = "reset_password.php?uid="+uid;
+        window.location.href = "resetPassword.php?uid="+uid;
     }
     </script>
 </head>

@@ -40,7 +40,7 @@
     });
 
     function view_order_page(jobid){
-        window.location.href = "view_order_details.php?jobid="+jobid;
+        window.location.href = "viewOrderDetails.php?jobid="+jobid;
     }
     </script>
 </head>
