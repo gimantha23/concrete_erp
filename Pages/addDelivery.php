@@ -17,14 +17,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Jquery, autocomplete -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.js"
-        integrity="sha512-TToQDr91fBeG4RE5RjMl/tqNAo35hSRR4cbIFasiV2AAMQ6yKXXYhdSdEpUcRE6bqsTiB+FPLPls4ZAFMoK5WA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -41,7 +33,7 @@
         const req_qty = parseFloat(document.getElementById("txtReqQty").value);
         const cumulative_qty = parseFloat(document.getElementById("txtCumulativeQuantity").value);
         const entered_qty = parseFloat(document.getElementById("txtDeliverQuantity").value);
-        const tot_qty = entered_qty+cumulative_qty;
+        const tot_qty = entered_qty + cumulative_qty;
         const deliverable_qty = req_qty - cumulative_qty;
         if(tot_qty > req_qty){
             document.getElementById("txtDeliverQuantity").value="";
