@@ -254,7 +254,7 @@ $job_no = ($_GET['jobid']);
             </div>
             <div class="row mb-5">
                 <div class="col-md-2 offset-md-4">
-                    <button type="submit" class="btn btn-outline-danger" name="btnSubmit" <?php echo $disabled; ?>>Reject</button>
+                    <!-- <button type="button" class="btn btn-outline-danger" name="btnReject" <?php echo $disabled; ?>>Reject</button> -->
                     <button type="button" class="btn btn-success" name="btnSubmit"
                         onclick="approve_order('<?php echo $job_no; ?>');" <?php echo $disabled; ?>>
                         <?php if($status=="pending"){echo "Approve";}else{echo"Approved";} ?>
