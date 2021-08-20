@@ -17,6 +17,7 @@
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/c829a83b30.js"></script>
     <link rel="stylesheet" href="../assets/css/mainStyles.css">
+    <link rel="stylesheet" href="../assets/css/userProfileStyles.css">
 
     <title>User Profile</title>
     <script type="text/javascript">
@@ -24,30 +25,6 @@
         window.history.back();
     }
     </script>
-    <style>
-    .center-card {
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        text-transform:capitalize;
-    }
-    .user-icon{
-        font-size:175px; 
-        color:#A9A9A9;
-        margin-top:10%;
-    }
-    .title{
-        font-weight:bold;
-    }
-    .active{
-        color:green;
-        font-weight:600;
-    }
-    .inactive{
-        color:red;
-        font-weight:600;
-    }
-    </style>
 </head>
 
 <body>
