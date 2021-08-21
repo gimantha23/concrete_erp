@@ -30,14 +30,16 @@ if(isset($_POST['btnSubmit'])){
                             VALUES ('$customer_name','','$customer_tele','$site_address','','$today_date')");
         $customer_id = mysqli_insert_id($con);
     }
-
-    $pay_receipt_no = $_POST["txtPayReceiptNo"];
-    $payment_mode = $_POST["txtPayMode"];
-    $payment_date = $_POST["txtPaymentDate"];
-
-    $insert_payment = mysqli_query($con, "INSERT INTO `payments`(`job_no`, `pay_receipt_no`, `pay_mode`, `payment_date`) 
-                    VALUES ('$job_no','$pay_receipt_no','$payment_mode','$payment_date')");
-    $payment_id = mysqli_insert_id($con);
+    
+    if (isset($_POST['chkPayment'])) {
+        $pay_receipt_no = $_POST["txtPayReceiptNo"];
+        $payment_mode = $_POST["txtPayMode"];
+        $payment_date = $_POST["txtPaymentDate"];
+    
+        $insert_payment = mysqli_query($con, "INSERT INTO `payments`(`job_no`, `pay_receipt_no`, `pay_mode`, `payment_date`) 
+                        VALUES ('$job_no','$pay_receipt_no','$payment_mode','$payment_date')");
+        $payment_id = mysqli_insert_id($con);
+    }
 
 	$sales_code = $_POST["txtSalesCode"];
     $req_date = $_POST["txtReqDate"];

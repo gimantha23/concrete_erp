@@ -38,27 +38,40 @@ $job_no = ($_GET['jobid']);
         } else {}
     }
     function approve_order(jobno) {
-        let action = confirm("Do you wish to approve Job No. " + jobno);
-        if (action) {
-            var req = getXmlHttpRequestObject();
-            if (req) {
-                req.onreadystatechange = function() {
-                    if (req.readyState == 4) {
-                        if (req.status == 200) {
-                            if (req.responseText == "success") {
-                                alert("Approved Job No. " + jobno);
-                            } else {
-                                console.log(req.responseText)
-                                alert("An error occured");
+        const pay_id = document.getElementById("txtPaymentId").value;
+        const receiptno = document.getElementById("txtPayReceiptNo").value;
+        const paymode = document.getElementById("txtPayMode").value;
+        const paydate = document.getElementById("txtPaymentDate").value;
+        if(receiptno!="" && paymode!="" && paydate!=""){
+            let action = confirm("Do you wish to approve Job No. " + jobno);
+            if (action) {
+                var req = getXmlHttpRequestObject();
+                if (req) {
+                    req.onreadystatechange = function() {
+                        if (req.readyState == 4) {
+                            if (req.status == 200) {
+                                if (req.responseText == "success") {
+                                    alert("Approved Job No. " + jobno);
+                                } else {
+                                    console.log(req.responseText)
+                                    alert("An error occured");
+                                }
+                                location.reload();
                             }
-                            location.reload();
                         }
                     }
+                    req.open("POST", "../PHPScripts/approve_order.php", true);
+                    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    req.send("jobno="+jobno+"&pay_id="+pay_id+"&receiptno="+receiptno+"&paymode="+paymode+"&paydate="+paydate);
                 }
-                req.open("POST", "../PHPScripts/approve_order.php", true);
-                req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                req.send("jobno=" + jobno);
             }
+        }else{
+            if(receiptno=="") { document.getElementById("txtPayReceiptNo").classList.add("is-invalid");
+                        document.getElementById("payreceiptError").innerHTML="Receipt number is required"; }
+            if(paymode=="") { document.getElementById("txtPayMode").classList.add("is-invalid");
+                        document.getElementById("paymodeError").innerHTML="Payment mode is required"; }
+            if(paydate=="") { document.getElementById("txtPaymentDate").classList.add("is-invalid");
+                        document.getElementById("paydateError").innerHTML="Payment date is required"; }
         }
     }
     </script>
@@ -75,8 +88,20 @@ $job_no = ($_GET['jobid']);
     $get_customer_details = mysqli_query($con, "SELECT * FROM customers WHERE id='".$res_order_details['customer_id']."'");
     $res_customer_details = mysqli_fetch_array($get_customer_details);
 
-    $get_payment_details = mysqli_query($con, "SELECT * FROM payments WHERE id='".$res_order_details['payment_id']."'");
-    $res_payment_details = mysqli_fetch_array($get_payment_details);
+    $readonly="";
+    if($res_order_details['payment_id']!=""){
+        $get_payment_details = mysqli_query($con, "SELECT * FROM payments WHERE id='".$res_order_details['payment_id']."'");
+        $res_payment_details = mysqli_fetch_array($get_payment_details);
+        $readonly="readonly";
+        $receiptno = $res_payment_details['pay_receipt_no'];
+        $paymode = $res_payment_details['pay_mode'];
+        $paymentdate = $res_payment_details['payment_date'];
+    }else{
+        $readonly="";
+        $receiptno ="";
+        $paymode = "";
+        $paymentdate = "";
+    }
 
     $status="pending";
     $disabled="";
@@ -92,6 +117,8 @@ $job_no = ($_GET['jobid']);
                     <label for="txtDate">Date</label>
                     <input type="text" class="form-control" id="txtDate"
                         value="<?php echo $res_order_details['date']; ?>" readonly>
+                    <input type="hidden" id="txtPaymentId" value="<?php echo $res_order_details['payment_id']; ?>">
+                    
                 </div>
                 <div class="col-md-3">
                     <label for="txtSalesCode">Sales Code</label>
@@ -239,17 +266,20 @@ $job_no = ($_GET['jobid']);
                 <div class="col-md-2">
                     <label for="txtPayReceiptNo">Payment Receipt No.</label>
                     <input type="text" class="form-control" id="txtPayReceiptNo" name="txtPayReceiptNo"
-                        value="<?php echo $res_payment_details['pay_receipt_no']; ?>" readonly>
+                        value="<?php echo $receiptno; ?>" <?php echo $readonly; ?>>
+                    <div id="payreceiptError" class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-2">
                     <label for="txtPayMode">Pay Mode</label>
                     <input type="text" class="form-control" id="txtPayMode" name="txtPayMode"
-                        value="<?php echo $res_payment_details['pay_mode']; ?>" readonly>
+                        value="<?php echo $paymode; ?>" <?php echo $readonly; ?>>
+                    <div id="paymodeError" class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-2">
-                    <label for="txtPaymentDate">Date</label>
-                    <input type="date" class="form-control" id="txtPaymentDate" name="txtPaymentDate"
-                        value="<?php echo $res_payment_details['payment_date']; ?>" readonly>
+                    <label for="txtPaymentDate">Payment Date</label>
+                    <input type="date" class="form-control" id="txtPaymentDate" name="txtPaymentDate" max="<?php echo date("Y-m-d"); ?>"
+                        value="<?php echo $paymentdate; ?>" <?php echo $readonly; ?>>
+                    <div id="paydateError" class="invalid-feedback"></div>
                 </div>
             </div>
             <div class="row mb-5">

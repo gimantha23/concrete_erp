@@ -52,6 +52,30 @@
             });
         });
     }
+    function togglePaymentDetails(){
+        const isChecked = document.getElementById("chkPayment").checked;
+        if(isChecked){
+            document.getElementById("payment_details").style.display="block";
+            document.getElementById("payment_details").innerHTML=
+                `<div class="row">
+                    <div class="col-md-2">
+                        <label for="txtPayReceiptNo">Payment Receipt No.</label>
+                        <input type="text" class="form-control" id="txtPayReceiptNo" name="txtPayReceiptNo" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="txtPayMode">Pay Mode</label>
+                        <input type="text" class="form-control" id="txtPayMode" name="txtPayMode" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="txtPaymentDate">Payment Date</label>
+                        <input type="date" class="form-control" id="txtPaymentDate" name="txtPaymentDate" max="<?php echo date("Y-m-d"); ?>" required>
+                    </div>
+                </div>`;
+        }else{
+            document.getElementById("payment_details").innerHTML=null;
+            document.getElementById("payment_details").style.display="none";
+        }
+    }
     </script>
 </head>
 
@@ -97,14 +121,14 @@
                 </div>
                 <div class="col-md-3">
                     <label for="txtCustomerTele">Tele.</label>
-                    <input type="text" class="form-control" id="txtCustomerTele" name="txtCustomerTele">
+                    <input type="text" class="form-control" id="txtCustomerTele" name="txtCustomerTele" required>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="txtSiteAddress">Site Address</label>
-                    <textarea class="form-control" id="txtSiteAddress" name="txtSiteAddress"></textarea>
+                    <textarea class="form-control" id="txtSiteAddress" name="txtSiteAddress" required></textarea>
                 </div>
             </div>
             <label><u>Concrete Requirement</u></label>
@@ -112,11 +136,11 @@
                 <div class="col-md-3">
                     <label for="txtReqDate">Date</label>
                     <input type="date" class="form-control" id="txtReqDate" name="txtReqDate"
-                        min="<?php echo date("Y-m-d"); ?>">
+                        min="<?php echo date("Y-m-d"); ?>" required>
                 </div>
                 <div class="col-md-3">
                     <label for="txtReqTime">Time</label>
-                    <input type="time" class="form-control" id="txtReqTime" name="txtReqTime">
+                    <input type="time" class="form-control" id="txtReqTime" name="txtReqTime" required>
                 </div>
             </div>
 
@@ -196,28 +220,21 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-4">
                 <div class="col-md-6">
                     <label for="txtPO">PO/Request Letter.</label>
                     <input type="text" class="form-control" id="txtPO" name="txtPO">
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <div class="col-md-2">
-                    <label for="txtPayReceiptNo">Payment Receipt No.</label>
-                    <input type="text" class="form-control" id="txtPayReceiptNo" name="txtPayReceiptNo" required>
-                </div>
-                <div class="col-md-2">
-                    <label for="txtPayMode">Pay Mode</label>
-                    <input type="text" class="form-control" id="txtPayMode" name="txtPayMode" required>
-                </div>
-                <div class="col-md-2">
-                    <label for="txtPaymentDate">Payment Date</label>
-                    <input type="date" class="form-control" id="txtPaymentDate" name="txtPaymentDate" required>
-                </div>
+            <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="chkPayment" name="chkPayment" onchange="togglePaymentDetails();">
+                <label class="custom-control-label" for="chkPayment">Payment details</label>
             </div>
-            <div class="row mb-5">
+            
+            <div id="payment_details"></div>
+
+            <div class="row mb-5 mt-5">
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-primary" name="btnSubmit">Submit</button>
                 </div>
