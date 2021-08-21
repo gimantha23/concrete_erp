@@ -60,7 +60,11 @@ require('../Components/header.php');
 <?php
     $logged_user = $_SESSION["user_id"];
     include('../PHPScripts/db_connect.php');
-    $get_order_records = mysqli_query($con, "SELECT * FROM concrete_order WHERE prepared_by='$logged_user'");
+    if($user_type=="admin" || $user_type=="manager"){
+        $get_order_records = mysqli_query($con, "SELECT * FROM concrete_order");
+    }else{
+        $get_order_records = mysqli_query($con, "SELECT * FROM concrete_order WHERE prepared_by='$logged_user'");
+    }
     while($result_order_records = mysqli_fetch_array($get_order_records)){
 
         $get_customer_name = mysqli_query($con, "SELECT customer_name FROM customers WHERE id='".$result_order_records['customer_id']."'");
