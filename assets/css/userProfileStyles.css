@@ -1,0 +1,22 @@
+.center-card {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  text-transform: capitalize;
+}
+.user-icon {
+  font-size: 175px;
+  color: #a9a9a9;
+  margin-top: 10%;
+}
+.title {
+  font-weight: bold;
+}
+.active {
+  color: green;
+  font-weight: 600;
+}
+.inactive {
+  color: red;
+  font-weight: 600;
+}

@@ -1,6 +1,4 @@
 footer{
-    /* position: sticky;
-    bottom: 0; */
     width: 100%;
     background-color: #333;
     padding:15px;
@@ -11,7 +9,7 @@ footer p{
     text-align: center;
 }
 
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 992px) {
     footer {
       display: none !important;
     }

@@ -10,7 +10,7 @@ if(isset($_POST['btnSubmit'])){
     $logged_user_id = $_SESSION["user_id"];
     date_default_timezone_set("Asia/Colombo");
     $today_date = date("Y.m.d");
-    $prepared_datetime = date("Y-m-d h:ia");
+    $prepared_datetime = date("Y-m-d H:i");
 
     $select_max_job_no = mysqli_query($con, "SELECT MAX(job_no) FROM concrete_order");
 	$result_max_job_no = mysqli_fetch_array($select_max_job_no);
@@ -63,6 +63,8 @@ if(isset($_POST['btnSubmit'])){
                                         VALUES ('$job_no','$today_date','$sales_code','$customer_id','$req_date','$req_time','$grade','$qty','$pump_car','$trucks','$slump','$slump_test','$molds','$laying','$polythene','$job_type','$concrete_rate','$pumpcar_rate','$laying_rate','$po_no','$payment_id','$logged_user_id', '$prepared_datetime')");
 
 
-	mysqli_close($con);
+    mysqli_close($con);
+    
+    header('location:../Pages/viewPastSalesOrders.php');
 }
 ?>

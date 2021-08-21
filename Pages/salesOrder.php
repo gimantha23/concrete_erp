@@ -3,6 +3,11 @@
     if(!isset($_SESSION["user_id"])){
         header('location:./index.php');
     }
+    $user_type = $_SESSION["user_type"];
+    if($user_type=="account" || $user_type=="production"){
+        header('location:../ErrorBoundary/403.php');
+        return;
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,10 +29,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/c829a83b30.js"></script>
-    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/mainStyles.css">
+    
     <title>Concrete Order</title>
 
     <script type="text/javascript">
+    function goBack() {
+        window.history.back();
+    }
     function get_customer() {
         jQuery.noConflict()(function($) {
             $("#txtCustomerName").autocomplete({
@@ -47,41 +56,12 @@
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="row text-center page-heading">
-                <h1>ERP Management System</h1>
-                <h3>ABC Lanka PLC</h3>
-            </div>
-        </div>
-        <nav class="navbar navbar-light navbar-expand bg-faded justify-content-center"
-            style="background-color:#f3f3f3;font-size:24px;padding:0px;">
-            <div class="container">
-                <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
-                    <ul class="navbar-nav w-100 justify-content-start">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="./dashboard.php"><i class="fa fa-home" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <?php
+<?php
+    include('../PHPScripts/db_connect.php');
+    require('../Components/header.php');
+
     date_default_timezone_set("Asia/Colombo");
     $today_date = date("Y.m.d");
-    $con = mysqli_connect("localhost","root","","erp_dev_database");
 
     $select_max_job_no = mysqli_query($con, "SELECT MAX(job_no) FROM concrete_order");
 	$result_max_job_no = mysqli_fetch_array($select_max_job_no);
@@ -91,8 +71,8 @@
 		$job_no = $result_max_job_no[0]+1;
     }
     ?>
-    <div class="container">
-        <form action="../PHPScripts/salesOrder_submit.php" method="post">
+    <div class="container page-spacing">
+        <form action="../PHPScripts/sales_order_submit.php" method="post">
             <div class="row mb-3 mt-3">
                 <div class="col-md-3">
                     <label for="txtDate">Date</label>
@@ -233,7 +213,7 @@
                     <input type="text" class="form-control" id="txtPayMode" name="txtPayMode" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="txtPaymentDate">Date</label>
+                    <label for="txtPaymentDate">Payment Date</label>
                     <input type="date" class="form-control" id="txtPaymentDate" name="txtPaymentDate" required>
                 </div>
             </div>
@@ -244,9 +224,7 @@
             </div>
         </form>
     </div>
-<?php
-require('../Components/footer.php');
-?>
+
 </body>
 
 </html>

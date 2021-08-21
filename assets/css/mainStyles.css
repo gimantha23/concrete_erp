@@ -1,0 +1,3 @@
+.page-spacing{
+    padding: 5% var(--bs-gutter-x,.75rem);
+}

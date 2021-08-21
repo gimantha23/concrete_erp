@@ -4,7 +4,7 @@
         header('location:./index.php');
     }
     $user_type = $_SESSION["user_type"];
-    if($user_type=="account" || $user_type=="sales"){
+    if($user_type=="account" || $user_type=="production"){
         header('location:../ErrorBoundary/403.php');
         return;
     }
@@ -29,22 +29,15 @@
     <script src="https://use.fontawesome.com/c829a83b30.js"></script>
     <link rel="stylesheet" href="../assets/css/mainStyles.css">
     
-    <title>Production</title>
+    <title>View Past Sales Orders</title>
 
     <script type="text/javascript">
     function goBack() {
         window.history.back();
     }
     $(document).ready(function() {
-        $('#production_datatable').DataTable();
+        $('#view_sales_orders').DataTable();
     });
-
-    function add_delivery_page(jobno){
-        window.location.href = "addDelivery.php?jobno="+jobno;
-    }
-    function view_delivery_page(jobno){
-        window.location.href = "viewDelivery.php?jobno="+jobno;
-    }
     </script>
 </head>
 
@@ -53,45 +46,42 @@
 require('../Components/header.php');
 ?>
     <div class="container page-spacing">
-        <table id="production_datatable" class="display table table-bordered">
+        <table id="view_sales_orders" class="display table table-bordered">
             <thead>
                 <tr style="text-align:center;">
                     <th>Job No.</th>
+                    <th>Date</th>
                     <th>Customer</th>
-                    <th>Delivery Date</th>
-                    <th>Req Quantity (m<sup>3</sup>)</th>
-                    <th>Sent Quantity (m<sup>3</sup>)</th>
-                    <th>Action</th>
+                    <th>Quantity</th>
+                    <th>Approval</th>
                 </tr>
             </thead>
             <tbody>
 <?php
+    $logged_user = $_SESSION["user_id"];
     include('../PHPScripts/db_connect.php');
-    $get_order_records = mysqli_query($con, "SELECT * FROM concrete_order WHERE approved='yes'");
+    if($user_type=="admin" || $user_type=="manager"){
+        $get_order_records = mysqli_query($con, "SELECT * FROM concrete_order");
+    }else{
+        $get_order_records = mysqli_query($con, "SELECT * FROM concrete_order WHERE prepared_by='$logged_user'");
+    }
     while($result_order_records = mysqli_fetch_array($get_order_records)){
 
         $get_customer_name = mysqli_query($con, "SELECT customer_name FROM customers WHERE id='".$result_order_records['customer_id']."'");
         $res_customer_name = mysqli_fetch_array($get_customer_name);
 
-        $disabled="";
-        if($result_order_records['order_complete']=="yes"){
-            $disabled="disabled";
+        if($result_order_records['approved']=="yes"){
+            $row_color_style = "style='background-color:#dfd !important'";
+        }else{
+            $row_color_style = "style='background-color:#fdd !important'";
         }
 ?>
-                <tr>
+                <tr <?php echo $row_color_style; ?>>
                     <td><?php echo $result_order_records['job_no']; ?></td>
+                    <td><?php echo $result_order_records['date']; ?></td>
                     <td><?php echo $res_customer_name['customer_name']; ?></td>
-                    <td><?php echo $result_order_records['required_date']; ?></td>
                     <td style="text-align:right;"><?php echo $result_order_records['requested_quantity']; ?></td>
-                    <td style="text-align:right;"><?php echo $result_order_records['total_delivered_qty']; ?></td>
-                    <td style="text-align:center;">
-                        <button type="button" class="btn btn-sm btn-primary" onclick="add_delivery_page('<?php echo $result_order_records['job_no']; ?>')" <?php echo $disabled; ?>>
-                            Add delivery
-                        </button>
-                        <button type="button" class="btn btn-sm btn-primary" onclick="view_delivery_page('<?php echo $result_order_records['job_no']; ?>')">
-                            View deliveries
-                        </button>
-                    </td>
+                    <td style="text-align:right;"><?php echo $result_order_records['approved']; ?></td>
                 </tr>
 <?php
     }

@@ -3,6 +3,7 @@
     if(!isset($_SESSION["user_id"])){
         header('location:./index.php');
     }
+    $user_type = $_SESSION["user_type"];
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,45 +19,22 @@
     <link rel="stylesheet" href="../assets/css/dashboard.css">
 
     <title>Dashboard</title>
+    <script type="text/javascript">
+    function goBack() {
+        window.history.back();
+    }
+    </script>
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="row text-center page-heading">
-                <h1>ERP Management System</h1>
-                <h3>ABC Lanka PLC</h3>
-            </div>
-        </div>
-        <nav class="navbar navbar-light navbar-expand bg-faded justify-content-center"
-            style="background-color:#f3f3f3;font-size:24px;padding:0px;">
-            <div class="container">
-                <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
-                    <ul class="navbar-nav w-100 justify-content-start">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="./dashboard.php"><i class="fa fa-home" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-
-
-    <div class="container">
+<?php
+require('../Components/header.php');
+?>
+    <div class="container" style="height:65vh;">
         <div class="row mt-4">
+        <?php 
+        if($user_type=="sales" || $user_type=="manager" || $user_type=="admin"){
+        ?>
             <div class="col-lg-3">
                 <a class="card-link" href="./salesOrder.php">
                     <div class="card card-item">
@@ -64,11 +42,36 @@
                             <h5 class="card-icon"><i class="fa fa-file-text-o"
                                     aria-hidden="true"></i>
                             </h5>
-                            <h5 class="card-title">Sales Order</h5>
+                            <h5 class="card-title">Concrete Order</h5>
                         </div>
                     </div>
                 </a>
             </div>
+        <?php
+        }
+        ?>
+
+        <?php 
+        if($user_type=="sales" || $user_type=="admin"){
+        ?>
+            <div class="col-lg-3">
+                <a class="card-link" href="./viewPastSalesOrders.php">
+                    <div class="card card-item">
+                        <div class="card-body text-center">
+                            <h5 class="card-icon"><i class="fa fa-list" aria-hidden="true"></i>
+                            </h5>
+                            <h5 class="card-title">View Past Orders</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        <?php
+        }
+        ?>
+
+        <?php 
+        if($user_type=="account" || $user_type=="manager" || $user_type=="admin"){
+        ?>
             <div class="col-lg-3">
                 <a class="card-link" href="./accounts.php">
                     <div class="card card-item">
@@ -80,6 +83,13 @@
                     </div>
                 </a>
             </div>
+        <?php
+        }
+        ?>
+
+        <?php 
+        if($user_type=="production" || $user_type=="manager" || $user_type=="admin"){
+        ?>
             <div class="col-lg-3">
                 <a class="card-link" href="./production.php">
                     <div class="card card-item">
@@ -91,8 +101,15 @@
                     </div>
                 </a>
             </div>
+        <?php
+        }
+        ?>
+
+        <?php 
+        if($user_type=="manager" || $user_type=="admin"){
+        ?>
             <div class="col-lg-3">
-                <a class="card-link" href="">
+                <a class="card-link" href="./manageUserDashboard.php">
                     <div class="card card-item">
                         <div class="card-body text-center">
                             <h5 class="card-icon"><i class="fa fa-user" aria-hidden="true"></i>
@@ -102,6 +119,9 @@
                     </div>
                 </a>
             </div>
+        <?php
+        }
+        ?>
         </div>
     </div>
 
