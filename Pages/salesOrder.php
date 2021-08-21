@@ -57,11 +57,11 @@
 
 <body>
 <?php
+    include('../PHPScripts/db_connect.php');
     require('../Components/header.php');
 
     date_default_timezone_set("Asia/Colombo");
     $today_date = date("Y.m.d");
-    $con = mysqli_connect("localhost","root","","erp_dev_database");
 
     $select_max_job_no = mysqli_query($con, "SELECT MAX(job_no) FROM concrete_order");
 	$result_max_job_no = mysqli_fetch_array($select_max_job_no);
@@ -213,7 +213,7 @@
                     <input type="text" class="form-control" id="txtPayMode" name="txtPayMode" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="txtPaymentDate">Date</label>
+                    <label for="txtPaymentDate">Payment Date</label>
                     <input type="date" class="form-control" id="txtPaymentDate" name="txtPaymentDate" required>
                 </div>
             </div>

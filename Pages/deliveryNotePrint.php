@@ -91,9 +91,10 @@ $res_customer_details = mysqli_fetch_array($sel_customer_details);
             <td width=12.5%>Aggregate size (Max)</td>
             <td width=12.5%>Type of Mix</td>
             <td width=12.5%>Admixture Type I</td>
-            <td width=12.5%>Admixture Type II</td>
+            <!-- <td width=12.5%>Admixture Type II</td> -->
             <td width=12.5%>Delivered Volume m<sup>3</sup></td>
             <td width=12.5%>Cumulative Volume m<sup>3</sup></td>
+            <td width=12.5%>Requested Volume m<sup>3</sup></td>
         </tr>
 
         <tr height=30px style="text-align:center">
@@ -102,8 +103,9 @@ $res_customer_details = mysqli_fetch_array($sel_customer_details);
             <td width=12.5%><?php echo $res_delivery_info['aggregate_size']; ?></td>
             <td width=12.5%><?php echo $res_delivery_info['mix_type']; ?></td>
             <td width=12.5%><?php echo $res_delivery_info['admixture_1']; ?></td>
-            <td width=12.5%><?php echo $res_delivery_info['admixture_2']; ?></td>
+            <!-- <td width=12.5%><?php echo $res_delivery_info['admixture_2']; ?></td> -->
             <td width=12.5%><?php echo $res_delivery_info['quantity']; ?></td>
+            <td width=12.5%><?php echo $res_order_info['total_delivered_qty']; ?></td>
             <td width=12.5%><?php echo $res_order_info['requested_quantity']; ?></td>
         </tr>
 

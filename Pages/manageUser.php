@@ -96,7 +96,7 @@ require('../Components/header.php');
             <tbody>
 <?php
     include('../PHPScripts/db_connect.php');
-    $get_users = mysqli_query($con, "SELECT * FROM users");
+    $get_users = mysqli_query($con, "SELECT * FROM users WHERE user_id!='1'");
     while($res_users = mysqli_fetch_array($get_users)){
 
         $status='';

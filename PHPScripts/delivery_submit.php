@@ -63,7 +63,8 @@ if(isset($_POST['btnSubmit'])){
     $aggregate_size = $_POST['txtAggregateSize'];
     $mix_type = $_POST['txtMixType'];
     $admixture_1 = $_POST['txtAdmixture1'];
-    $admixture_2 = $_POST['txtAdmixture2'];
+    // $admixture_2 = $_POST['txtAdmixture2'];
+    $admixture_2 = "";
     $design_slump = $_POST['txtDesignSlump'];
     $slump = $_POST['txtSlump'];
     $noofcubes = $_POST['txtNoOfCubes'];

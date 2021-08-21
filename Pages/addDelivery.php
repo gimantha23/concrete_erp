@@ -49,13 +49,13 @@
 
 <body>
 <?php
+    include('../PHPScripts/db_connect.php');
     require('../Components/header.php');
 
     $job_no = $_GET['jobno'];
 
     date_default_timezone_set("Asia/Colombo");
     $today_date = date("Y.m.d");
-    $con = mysqli_connect("localhost","root","","erp_dev_database");
 
     $select_max_delivery_no = mysqli_query($con, "SELECT MAX(delivery_no) FROM delivery WHERE job_no='$job_no'");
 	$result_max_delivery_no = mysqli_fetch_array($select_max_delivery_no);
@@ -85,7 +85,6 @@
                 <div class="col-md-3">
                     <label for="txtDate">Date</label>
                     <input type="text" class="form-control" id="txtDate" value="<?php echo $today_date; ?>" readonly>
-                    <input type="hidden" id="txtReqQty" name="txtReqQty" value="<?php echo $res_order_details['requested_quantity']; ?>" readonly>
                 </div>
                 <div class="col-md-3">
                     <label for="txtPoNo">PO No</label>
@@ -162,10 +161,10 @@
                     <label for="txtAdmixture1">Admixture Type I</label>
                     <input type="text" class="form-control" id="txtAdmixture1" name="txtAdmixture1">
                 </div>
-                <div class="col-md-2">
+                <!-- <div class="col-md-2">
                     <label for="txtAdmixture2">Admixture Type II</label>
                     <input type="text" class="form-control" id="txtAdmixture2" name="txtAdmixture2">
-                </div>
+                </div> -->
                 <div class="col-md-2">
                     <label for="txtDeliverQuantity">Delivered Volume m<sup>3</sup></label>
                     <input type="number" min="0.01" step="0.01" class="form-control " id="txtDeliverQuantity" name="txtDeliverQuantity" onkeyup="check_quantity();" required>
@@ -174,6 +173,10 @@
                 <div class="col-md-2">
                     <label for="txtCumulativeQuantity">Cumulative Volume m<sup>3</sup></label>
                     <input type="text" class="form-control" id="txtCumulativeQuantity" name="txtCumulativeQuantity" value="<?php echo $res_order_details['total_delivered_qty']; ?>" readonly>
+                </div>
+                <div class="col-md-2">
+                    <label for="txtCumulativeQuantity">Requested Volume m<sup>3</sup></label>
+                    <input type="text" class="form-control" id="txtReqQty" name="txtReqQty" value="<?php echo $res_order_details['requested_quantity']; ?>" readonly>
                 </div>
             </div>
 
