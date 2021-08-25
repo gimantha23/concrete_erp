@@ -64,6 +64,8 @@ if(isset($_POST['btnSubmit'])){
     $insert_data = mysqli_query($con, "INSERT INTO `concrete_order`(`job_no`, `date`, `sales_code`, `customer_id`, `required_date`, `required_time`, `grade`, `requested_quantity`, `pump_car`, `trucks`, `slump`, `slump_test`, `c_molds`, `laying`, `polythene`, `job_type`, `concrete_rate`, `pumpcar_rate`, `laying_rate`, `po_no`, `payment_id`, `prepared_by`, `prepared_datetime`) 
                                         VALUES ('$job_no','$today_date','$sales_code','$customer_id','$req_date','$req_time','$grade','$qty','$pump_car','$trucks','$slump','$slump_test','$molds','$laying','$polythene','$job_type','$concrete_rate','$pumpcar_rate','$laying_rate','$po_no','$payment_id','$logged_user_id', '$prepared_datetime')");
 
+    $update_sales_code = mysqli_query($con,"UPDATE sales_code SET sales_code='$sales_code' WHERE user_id='$logged_user_id'");
+
 
     mysqli_close($con);
     

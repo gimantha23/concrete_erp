@@ -11,11 +11,15 @@ if(isset($_POST['btnSubmit'])){
     $usertype = $_POST['selUserType'];
     $email = $_POST['txtEmail'];
     $pw = $_POST['txtConPwd'];
+    $sales_code = $_POST['txtSalesCode'];
 
     $add_user = mysqli_query($con, "INSERT INTO `users`(`username`, `first_name`, `last_name`, `user_type`, `password`, `email`, `active`, `added_date`, `added_by`) 
                                                 VALUES ('$username','$fname','$lname','$usertype','$pw','$email','yes','$today_date','$logged_user_id')");
+    $inserted_user_id = mysqli_insert_id($con);
 
-    if($add_user){
+    $add_sales_code = mysqli_query($con, "INSERT INTO `sales_code`(`user_id`, `sales_code_prefix`) VALUES ('$inserted_user_id','$sales_code')");
+
+    if($add_user && $add_sales_code){
         header('location:../Pages/manageUser.php');
     }
 

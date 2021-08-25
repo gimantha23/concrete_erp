@@ -94,6 +94,16 @@
 	} else {
 		$job_no = $result_max_job_no[0]+1;
     }
+
+    $select_max_sales_no = mysqli_query($con, "SELECT MAX(sales_code), sales_code_prefix AS prefix FROM sales_code WHERE user_id=".$_SESSION['user_id']."");
+	$result_max_sales_no = mysqli_fetch_array($select_max_sales_no);
+	if ($result_max_sales_no[0] == '') {
+		$formatted_sales_no = '001';
+	} else {
+        $max_sales_no = substr($result_max_sales_no[0], -3);
+        $sales_no = $max_sales_no + 1;
+        $formatted_sales_no = str_pad($sales_no, 3, 0, STR_PAD_LEFT);
+    }
     ?>
     <div class="container page-spacing">
         <form action="../PHPScripts/sales_order_submit.php" method="post">
@@ -104,7 +114,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="txtSalesCode">Sales Code</label>
-                    <input type="text" class="form-control" id="txtSalesCode" name="txtSalesCode">
+                    <input type="text" class="form-control" id="txtSalesCode" name="txtSalesCode" value="<?php echo $result_max_sales_no['prefix'].$formatted_sales_no; ?>" readonly>
                 </div>
                 <div class="col-md-3">
                     <label for="txtJobNo">Job No.</label>

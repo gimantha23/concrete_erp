@@ -84,6 +84,60 @@
             document.getElementById("submitButton").disabled=true;
         }
     }
+    function check_salescode() {
+        const salescode = document.getElementById("txtSalesCode").value;
+        if(salescode){
+            var req = getXmlHttpRequestObject();
+            if (req) {
+                req.onreadystatechange = function() {
+                    if (req.readyState == 4) {
+                        if (req.status == 200) {
+                            if (req.responseText == "ok") {
+                                document.getElementById("txtSalesCode").classList.remove("is-invalid");
+                                document.getElementById("txtSalesCode").classList.add("is-valid");
+                                document.getElementById("salescode_success").innerHTML="Sales code is available";
+                                document.getElementById("submitButton").disabled=false;
+                            } else if (req.responseText == "duplicate") {
+                                document.getElementById("txtSalesCode").classList.remove("is-valid");
+                                document.getElementById("txtSalesCode").classList.add("is-invalid");
+                                document.getElementById("duplicate_salescode_error").innerHTML="Sales code is taken.";
+                                document.getElementById("submitButton").disabled=true;
+                            }
+                        }
+                    }
+                }
+                req.open("POST", "../PHPScripts/check_sales_code.php", true);
+                req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                req.send("sales_code=" + salescode);
+            }
+        }else{
+            document.getElementById("txtSalesCode").classList.remove("is-invalid");
+            document.getElementById("txtSalesCode").classList.remove("is-valid");
+            document.getElementById("duplicate_salescode_error").innerHTML="";
+            document.getElementById("salescode_success").innerHTML="";
+            document.getElementById("submitButton").disabled=true;
+        }
+    }
+    function format_sales_code(){
+        const salescode = document.getElementById("txtSalesCode").value;
+        document.getElementById("txtSalesCode").value = salescode.toUpperCase();
+    }
+    function allow_letters(event){
+        var charCode = event.keyCode;
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function lettersOnly() {
+        var charCode = event.keyCode;
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8){
+            return true;
+        } else {
+            return false;
+        }
+    }
     </script>
 </head>
 
@@ -116,6 +170,12 @@
             </div>
 
             <div class="row mb-3 mt-3">
+                <div class="col-md-3">
+                    <label for="txtSalesCode">Sales code</label>
+                    <input type="text" class="form-control" id="txtSalesCode" name="txtSalesCode" onkeypress="return allow_letters(event);" onkeyup="format_sales_code();" onchange="check_salescode();" required>
+                    <div id="salescode_success" class="valid-feedback"></div>
+                    <div id="duplicate_salescode_error" class="invalid-feedback"></div>
+                </div>
                 <div class="col-md-3">
                     <label for="selUserType">Department</label>
                     <select class="form-control" id="selUserType" name="selUserType" required>

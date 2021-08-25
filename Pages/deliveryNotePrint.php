@@ -62,7 +62,7 @@ $res_customer_details = mysqli_fetch_array($sel_customer_details);
         <tr height=30px>
             <td class="left-spacing">Customer</td>
             <td class="left-spacing"><?php echo $res_customer_details['customer_name']; ?></td>
-            <td></td>
+            <td class="left-spacing">Sales Code: <?php echo $res_order_info['sales_code']; ?> </td>
         </tr>
 
         <tr height=30px>
