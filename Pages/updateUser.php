@@ -107,7 +107,7 @@
             <div class="row mb-3 mt-3">
                 <div class="col-md-3">
                     <label for="selUserType">Department</label>
-                    <select class="form-control" id="selUserType" name="selUserType" required>
+                    <select class="form-control" id="selUserType" name="selUserType" disabled>
                         <option value='<?php echo $res_data['user_type']; ?>'><?php echo $res_data['user_type']; ?></option>
                         <option value='manager'>Manager</option>
                         <option value='sales'>Sales</option>
