@@ -86,11 +86,12 @@
     $res_data = mysqli_fetch_array($sel_data);
     ?>
     <div class="container page-spacing">
-        <form action="../PHPScripts/add_user_submit.php" method="post">
+        <form action="../PHPScripts/update_user_submit.php" method="post">
             <div class="row mb-3 mt-3">
                 <div class="col-md-3">
                     <label for="txtUsername">Username</label>
                     <input type="text" class="form-control" id="txtUsername" name="txtUsername" onchange="check_username();" value="<?php echo $res_data['username']; ?>" required>
+                    <input type="hidden" id="user_id" name="user_id" value="<?php echo $uid; ?>">
                     <div id="username_success" class="valid-feedback"></div>
                     <div id="duplicate_username_error" class="invalid-feedback"></div>
                 </div>
@@ -107,7 +108,7 @@
             <div class="row mb-3 mt-3">
                 <div class="col-md-3">
                     <label for="selUserType">Department</label>
-                    <select class="form-control" id="selUserType" name="selUserType" disabled>
+                    <select class="form-control" id="selUserType" name="selUserType" readonly>
                         <option value='<?php echo $res_data['user_type']; ?>'><?php echo $res_data['user_type']; ?></option>
                         <option value='manager'>Manager</option>
                         <option value='sales'>Sales</option>
