@@ -29,7 +29,7 @@
     <script src="https://use.fontawesome.com/c829a83b30.js"></script>
     <link rel="stylesheet" href="../assets/css/mainStyles.css">
     
-    <title>Accounts</title>
+    <title>Additional Quantity List</title>
 
     <script type="text/javascript">
     function goBack() {
@@ -39,8 +39,8 @@
         $('#table_id').DataTable();
     });
 
-    function view_order_page(jobid){
-        window.location.href = "viewOrderDetails.php?jobid="+jobid;
+    function add_quantity_page(jobid){
+        window.location.href = "addQuantity.php?jobid="+jobid;
     }
     </script>
 </head>
@@ -57,14 +57,13 @@ require('../Components/header.php');
                     <th>Date</th>
                     <th>Customer</th>
                     <th>Quantity</th>
-                    <th>Approval</th>
-                    <th>View</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
 <?php
     include('../PHPScripts/db_connect.php');
-    $get_order_records = mysqli_query($con, "SELECT * FROM concrete_order");
+    $get_order_records = mysqli_query($con, "SELECT * FROM concrete_order WHERE approved='yes'");
     while($result_order_records = mysqli_fetch_array($get_order_records)){
 
         $get_customer_name = mysqli_query($con, "SELECT customer_name FROM customers WHERE id='".$result_order_records['customer_id']."'");
@@ -81,8 +80,7 @@ require('../Components/header.php');
                     <td><?php echo $result_order_records['date']; ?></td>
                     <td><?php echo $res_customer_name['customer_name']; ?></td>
                     <td style="text-align:right;"><?php echo $result_order_records['requested_quantity']; ?></td>
-                    <td style="text-align:right;"><?php echo $result_order_records['approved']; ?></td>
-                    <td style="text-align:center;"><button class="btn-sm btn-primary" onclick="view_order_page('<?php echo $result_order_records['job_no']; ?>')">view</button></td>
+                    <td style="text-align:center;"><button class="btn-sm btn-primary" onclick="add_quantity_page('<?php echo $result_order_records['job_no']; ?>')">Add</button></td>
                 </tr>
 <?php
     }

@@ -24,7 +24,7 @@ $job_no = ($_GET['jobid']);
     <script src="https://use.fontawesome.com/c829a83b30.js"></script>
     <link rel="stylesheet" href="../assets/css/mainStyles.css">
     
-    <title>View Order Details</title>
+    <title>Approve Order</title>
 
     <script type="text/javascript">
     function goBack() {

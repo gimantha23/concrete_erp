@@ -73,7 +73,7 @@ require('../Components/header.php');
         if($user_type=="account" || $user_type=="manager" || $user_type=="admin"){
         ?>
             <div class="col-lg-3">
-                <a class="card-link" href="./accounts.php">
+                <a class="card-link" href="./accountsDashboard.php">
                     <div class="card card-item">
                         <div class="card-body text-center">
                             <h5 class="card-icon"><i class="fa fa-book" aria-hidden="true"></i>

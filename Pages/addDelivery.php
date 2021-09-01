@@ -114,18 +114,18 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="txtContactPerson">Contact Person at Site</label>
-                    <input type="text" class="form-control" id="txtContactPerson" name="txtContactPerson">
+                    <input type="text" class="form-control" id="txtContactPerson" name="txtContactPerson" required>
                 </div>
                 <div class="col-md-3">
                     <label for="txtContactNo">Contact No</label>
-                    <input type="text" class="form-control" id="txtContactNo" name="txtContactNo">
+                    <input type="text" class="form-control" id="txtContactNo" name="txtContactNo" required>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-3">
                     <label for="txtVehicleNo">Vehicle No</label>
-                    <input type="text" class="form-control" id="txtVehicleNo" name="txtVehicleNo">
+                    <input type="text" class="form-control" id="txtVehicleNo" name="txtVehicleNo" required>
                 </div>
                 <div class="col-md-3">
                     <label for="txtTripNo">Trip No</label>
@@ -144,22 +144,22 @@
                 </div>
                 <div class="col-md-2">
                     <label for="txtCementType">Cement Type</label>
-                    <input type="text" class="form-control" id="txtCementType" name="txtCementType">
+                    <input type="text" class="form-control" id="txtCementType" name="txtCementType" required>
                 </div>
                 <div class="col-md-2">
                     <label for="txtAggregateSize">Aggregate Size (Max)</label>
-                    <input type="text" class="form-control" id="txtAggregateSize" name="txtAggregateSize">
+                    <input type="text" class="form-control" id="txtAggregateSize" name="txtAggregateSize" required>
                 </div>
                 <div class="col-md-2">
                     <label for="txtMixType">Type of Mix</label>
-                    <input type="text" class="form-control" id="txtMixType" name="txtMixType">
+                    <input type="text" class="form-control" id="txtMixType" name="txtMixType" required>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-2">
                     <label for="txtAdmixture1">Admixture Type I</label>
-                    <input type="text" class="form-control" id="txtAdmixture1" name="txtAdmixture1">
+                    <input type="text" class="form-control" id="txtAdmixture1" name="txtAdmixture1" required>
                 </div>
                 <!-- <div class="col-md-2">
                     <label for="txtAdmixture2">Admixture Type II</label>
@@ -184,30 +184,30 @@
             <div class="row mb-3">
                 <div class="col-md-2">
                     <label for="txtDesignSlump">Design Slump (mm)</label>
-                    <input type="text" class="form-control" id="txtDesignSlump" name="txtDesignSlump">
+                    <input type="text" class="form-control" id="txtDesignSlump" name="txtDesignSlump" required>
                 </div>
                 <div class="col-md-2">
                     <label for="txtSlump">Slump (mm)</label>
-                    <input type="text" class="form-control" id="txtSlump" name="txtSlump">
+                    <input type="text" class="form-control" id="txtSlump" name="txtSlump" required>
                 </div>
                 <div class="col-md-2">
                     <label for="txtNoOfCubes">No.of Cubes</label>
-                    <input type="text" class="form-control" id="txtNoOfCubes" name="txtNoOfCubes">
+                    <input type="text" class="form-control" id="txtNoOfCubes" name="txtNoOfCubes" required>
                 </div>
                 <div class="col-md-2">
                     <label for="txtTemperature">Temperature</label>
-                    <input type="text" class="form-control" id="txtTemperature" name="txtTemperature">
+                    <input type="text" class="form-control" id="txtTemperature" name="txtTemperature" required>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="txtDispatchedBy">Dispatched by (Name)</label>
-                    <input type="text" class="form-control" id="txtDispatchedBy" name="txtDispatchedBy">
+                    <input type="text" class="form-control" id="txtDispatchedBy" name="txtDispatchedBy" required>
                 </div>
                 <div class="col-md-2">
                     <label for="txtDispatchedTime">Time</label>
-                    <input type="time" class="form-control" id="txtDispatchedTime" name="txtDispatchedTime">
+                    <input type="time" class="form-control" id="txtDispatchedTime" name="txtDispatchedTime" required>
                 </div>
             </div>
 
