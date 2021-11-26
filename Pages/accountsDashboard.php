@@ -4,7 +4,7 @@
         header('location:./index.php');
     }
     $user_type = $_SESSION["user_type"];
-    if($user_type=="sales" || $user_type=="account" || $user_type=="production"){
+    if($user_type=="sales" || $user_type=="production"){
         header('location:../ErrorBoundary/403.php');
         return;
     }
